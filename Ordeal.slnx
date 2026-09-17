@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Ordeal.App/Ordeal.App.csproj" />
+  </Folder>
+</Solution>
