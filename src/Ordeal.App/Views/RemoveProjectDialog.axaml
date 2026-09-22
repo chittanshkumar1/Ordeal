@@ -1,0 +1,64 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Ordeal.App.Views.RemoveProjectDialog"
+    WindowStartupLocation="CenterOwner"
+    CanResize="False"
+    ShowInTaskbar="False"
+    SizeToContent="WidthAndHeight">
+
+    <Border
+        Padding="24"
+        MinWidth="500">
+
+        <StackPanel Spacing="16">
+
+            <TextBlock
+                Text="Remove Project"
+                FontSize="22"
+                FontWeight="Bold"/>
+
+            <TextBlock
+                x:Name="QuestionText"
+                TextWrapping="Wrap"
+                FontSize="14"/>
+
+            <TextBlock
+                x:Name="PathText"
+                TextWrapping="Wrap"
+                FontSize="13"
+                Opacity="0.75"/>
+
+            <CheckBox
+                x:Name="RemoveGitRepositoryCheckBox"
+                Content="Remove Git repository"/>
+
+            <TextBlock
+                x:Name="GitWarningText"
+                Text="If checked, the GitHub repository will also be permanently deleted."
+                TextWrapping="Wrap"
+                FontSize="13"
+                IsVisible="False"/>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Spacing="10">
+
+                <Button
+                    Content="Cancel"
+                    Click="CancelButton_Click"
+                    MinWidth="90"/>
+
+                <Button
+                    Content="Remove Project"
+                    Click="RemoveProjectButton_Click"
+                    MinWidth="120"/>
+
+            </StackPanel>
+
+        </StackPanel>
+
+    </Border>
+
+</Window>

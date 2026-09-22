@@ -1,0 +1,391 @@
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Ordeal.App.Views.AddProjectWindow"
+    Title="Create Project"
+    Width="900"
+    Height="900"
+    MinWidth="760"
+    MinHeight="700"
+    Background="#101216">
+
+    <Window.Styles>
+
+        <!-- Global text -->
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="#F4F4F5"/>
+        </Style>
+
+        <Style Selector="TextBlock.subtitle">
+            <Setter Property="Foreground" Value="#A1A1AA"/>
+        </Style>
+
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#E4E4E7"/>
+        </Style>
+
+        <Style Selector="TextBlock.helper">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#8B8D94"/>
+        </Style>
+
+        <!-- Text boxes -->
+        <Style Selector="TextBox">
+            <Setter Property="MinHeight" Value="42"/>
+            <Setter Property="Background" Value="#0B0D10"/>
+            <Setter Property="Foreground" Value="#F4F4F5"/>
+            <Setter Property="BorderBrush" Value="#3A3D44"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Padding" Value="12,9"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#8B5CF6"/>
+        </Style>
+
+        <Style Selector="TextBox.hierarchy">
+            <Setter Property="MinHeight" Value="155"/>
+            <Setter Property="Padding" Value="14"/>
+            <Setter Property="FontFamily" Value="monospace"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="AcceptsReturn" Value="True"/>
+            <Setter Property="VerticalContentAlignment" Value="Top"/>
+        </Style>
+
+        <!-- Normal buttons -->
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#292C32"/>
+            <Setter Property="Foreground" Value="#F4F4F5"/>
+            <Setter Property="BorderBrush" Value="#41444B"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="7"/>
+            <Setter Property="Padding" Value="16,9"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#343840"/>
+        </Style>
+
+        <!-- Browse -->
+        <Style Selector="Button.browse">
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="MinHeight" Value="42"/>
+        </Style>
+
+        <!-- Mode buttons -->
+        <Style Selector="Button.mode">
+            <Setter Property="MinWidth" Value="82"/>
+            <Setter Property="MinHeight" Value="34"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style Selector="Button.mode.active">
+            <Setter Property="Background" Value="#7C3AED"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#8B5CF6"/>
+        </Style>
+
+        <!-- Primary button -->
+        <Style Selector="Button.primary">
+            <Setter Property="Background" Value="#7C3AED"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#8B5CF6"/>
+            <Setter Property="MinWidth" Value="155"/>
+            <Setter Property="MinHeight" Value="44"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style Selector="Button.primary:pointerover">
+            <Setter Property="Background" Value="#8B5CF6"/>
+        </Style>
+
+        <!-- Cancel -->
+        <Style Selector="Button.cancel">
+            <Setter Property="MinWidth" Value="110"/>
+            <Setter Property="MinHeight" Value="44"/>
+            <Setter Property="Background" Value="#1A1D22"/>
+        </Style>
+
+        <!-- Checkboxes -->
+        <Style Selector="CheckBox">
+            <Setter Property="Foreground" Value="#E4E4E7"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <!-- Radio buttons -->
+        <Style Selector="RadioButton">
+            <Setter Property="Foreground" Value="#E4E4E7"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+    </Window.Styles>
+
+
+    <ScrollViewer
+        HorizontalScrollBarVisibility="Disabled"
+        VerticalScrollBarVisibility="Auto">
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!-- Main content -->
+            <StackPanel
+                Grid.Row="0"
+                Margin="32"
+                Spacing="20">
+
+                <!-- HEADER -->
+                <StackPanel Spacing="5">
+
+                    <TextBlock
+                        Text="Create Project"
+                        FontSize="30"
+                        FontWeight="Bold"/>
+
+                    <TextBlock
+                        Classes="subtitle"
+                        Text="Set up a new project for Ordeal."
+                        FontSize="14"/>
+
+                </StackPanel>
+
+
+                <!-- PROJECT NAME -->
+                <StackPanel Spacing="7">
+
+                    <TextBlock
+                        Classes="label"
+                        Text="Project Name"/>
+
+                    <TextBox
+                        x:Name="ProjectNameBox"
+                        PlaceholderText="Enter project name"/>
+
+                </StackPanel>
+
+
+                <!-- LOCATION -->
+                <StackPanel Spacing="7">
+
+                    <TextBlock
+                        Classes="label"
+                        Text="Project Location"/>
+
+                    <Grid
+                        ColumnDefinitions="*,Auto"
+                        ColumnSpacing="10">
+
+                        <TextBox
+                            x:Name="ProjectLocationBox"
+                            Grid.Column="0"
+                            PlaceholderText="Choose a parent folder"/>
+
+                        <Button
+                            Grid.Column="1"
+                            Classes="browse"
+                            Content="Browse"
+                            Click="BrowseButton_Click"/>
+
+                    </Grid>
+
+                </StackPanel>
+
+
+                <!-- DESCRIPTION -->
+                <StackPanel Spacing="7">
+
+                    <TextBlock
+                        Classes="label"
+                        Text="Description"/>
+
+                    <TextBox
+                        x:Name="DescriptionBox"
+                        AcceptsReturn="True"
+                        TextWrapping="Wrap"
+                        VerticalContentAlignment="Top"
+                        MinHeight="105"
+                        PlaceholderText="Describe your project..."/>
+
+                </StackPanel>
+
+
+                <!-- FOLDER STRUCTURE -->
+                <StackPanel Spacing="7">
+
+                    <TextBlock
+                        Classes="label"
+                        Text="Intended Folder Structure"/>
+
+                    <TextBlock
+                        Classes="helper"
+                        Text="Use TAB indentation to define parent and child folders."/>
+
+                    <TextBox
+                        x:Name="FolderStructureBox"
+                        Classes="hierarchy"
+                        PlaceholderText="Example:&#10;Project&#10;&#9;Assets&#10;&#9;&#9;Images&#10;&#9;&#9;Audio&#10;&#9;Source&#10;&#9;&#9;Scripts"/>
+
+                </StackPanel>
+
+
+                <!-- TASK HIERARCHY -->
+                <StackPanel Spacing="7">
+
+                    <!-- Task title + mode toggle -->
+                    <Grid
+                        ColumnDefinitions="*,Auto">
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Classes="label"
+                            Text="Task Hierarchy"
+                            VerticalAlignment="Center"/>
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            Spacing="4">
+
+                            <Button
+                                x:Name="TextModeButton"
+                                Classes="mode active"
+                                Content="Textual"
+                                Click="TextModeButton_Click"/>
+
+                            <Button
+                                x:Name="TreeModeButton"
+                                Classes="mode"
+                                Content="Tree"
+                                Click="TreeModeButton_Click"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <TextBlock
+                        Classes="helper"
+                        Text="Use TAB indentation to define parent and child tasks."/>
+
+                    <!-- Textual mode -->
+                    <TextBox
+                        x:Name="TaskHierarchyBox"
+                        Classes="hierarchy"
+                        PlaceholderText="Example:&#10;Build Project : 10d&#10;&#9;Asset : 4d&#10;&#9;&#9;Images : 2d&#10;&#10;OR&#10;Build Project : 01/10/2026&#10;&#9;Asset : 25/09/2026&#10;&#9;&#9;Images : 23/09/2026&#10;&#10;Dates: DD/MM/YYYY&#10;Duration: number + d (days)&#10;Spaces around ':' don't matter."/>
+
+                    <!-- Tree mode -->
+                    <Border
+                        x:Name="TaskTreeBorder"
+                        IsVisible="False"
+                        MinHeight="155"
+                        Background="#0B0D10"
+                        BorderBrush="#3A3D44"
+                        BorderThickness="1"
+                        CornerRadius="7"
+                        Padding="14">
+
+                        <ScrollViewer
+                            HorizontalScrollBarVisibility="Disabled"
+                            VerticalScrollBarVisibility="Auto">
+
+                            <StackPanel
+                                x:Name="TaskTreePanel"
+                                Spacing="3"/>
+
+                        </ScrollViewer>
+
+                    </Border>
+
+                </StackPanel>
+
+
+                <!-- GIT / GITHUB -->
+                <Border
+                    Padding="16"
+                    CornerRadius="10"
+                    Background="#181B20"
+                    BorderBrush="#343840"
+                    BorderThickness="1">
+
+                    <StackPanel Spacing="14">
+
+                        <TextBlock
+                            Text="Git &amp; GitHub"
+                            FontSize="18"
+                            FontWeight="SemiBold"/>
+
+                        <StackPanel
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Spacing="24">
+
+                            <CheckBox
+                                x:Name="InitializeGitCheckBox"
+                                Content="Initialize Git repository"/>
+
+                            <CheckBox
+                                x:Name="CreateGitHubRepositoryCheckBox"
+                                Content="Create GitHub repository"/>
+
+                            <Border
+                                Width="1"
+                                Height="28"
+                                Background="#3A3D44"
+                                Margin="2,0,0,0"/>
+
+                            <TextBlock
+                                Text="Repository visibility:"
+                                VerticalAlignment="Center"
+                                Foreground="#A1A1AA"/>
+
+                            <RadioButton
+                                x:Name="PrivateRadioButton"
+                                Content="Private"
+                                GroupName="Visibility"
+                                IsChecked="True"
+                                VerticalAlignment="Center"/>
+
+                            <RadioButton
+                                x:Name="PublicRadioButton"
+                                Content="Public"
+                                GroupName="Visibility"
+                                VerticalAlignment="Center"/>
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </Border>
+
+
+                <!-- ACTIONS -->
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="10"
+                    Margin="0,2,0,16">
+
+                    <Button
+                        Classes="cancel"
+                        Content="Cancel"
+                        Click="CancelButton_Click"/>
+
+                    <Button
+                        Classes="primary"
+                        Content="Create Project"
+                        Click="CreateProjectButton_Click"/>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>

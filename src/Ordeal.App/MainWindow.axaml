@@ -1,9 +1,320 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Ordeal.App.MainWindow"
-        Title="Ordeal.App">
-    Welcome to Avalonia!
+<Window
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="Ordeal.App.MainWindow"
+    Title="Ordeal"
+    Width="1100"
+    Height="750"
+    MinWidth="850"
+    MinHeight="600"
+    Background="#101216">
+
+    <Window.Styles>
+
+        <!-- ================================================= -->
+        <!-- TEXT -->
+        <!-- ================================================= -->
+
+        <Style Selector="TextBlock">
+            <Setter
+                Property="Foreground"
+                Value="#F4F4F5"/>
+        </Style>
+
+        <Style Selector="TextBlock.subtitle">
+            <Setter
+                Property="Foreground"
+                Value="#A1A1AA"/>
+
+            <Setter
+                Property="FontSize"
+                Value="14"/>
+        </Style>
+
+        <Style Selector="TextBlock.section-title">
+            <Setter
+                Property="Foreground"
+                Value="#E4E4E7"/>
+
+            <Setter
+                Property="FontSize"
+                Value="18"/>
+
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"/>
+        </Style>
+
+        <Style Selector="TextBlock.card-title">
+            <Setter
+                Property="Foreground"
+                Value="#F4F4F5"/>
+
+            <Setter
+                Property="FontSize"
+                Value="18"/>
+
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"/>
+        </Style>
+
+        <Style Selector="TextBlock.card-muted">
+            <Setter
+                Property="Foreground"
+                Value="#A1A1AA"/>
+
+            <Setter
+                Property="FontSize"
+                Value="13"/>
+        </Style>
+
+        <!-- ================================================= -->
+        <!-- BUTTONS -->
+        <!-- ================================================= -->
+
+        <Style Selector="Button">
+            <Setter
+                Property="Background"
+                Value="#292C32"/>
+
+            <Setter
+                Property="Foreground"
+                Value="#F4F4F5"/>
+
+            <Setter
+                Property="BorderBrush"
+                Value="#41444B"/>
+
+            <Setter
+                Property="BorderThickness"
+                Value="1"/>
+
+            <Setter
+                Property="CornerRadius"
+                Value="7"/>
+
+            <Setter
+                Property="Padding"
+                Value="14,8"/>
+
+            <Setter
+                Property="FontSize"
+                Value="14"/>
+        </Style>
+
+        <Style Selector="Button.primary">
+            <Setter
+                Property="Background"
+                Value="#7C3AED"/>
+
+            <Setter
+                Property="Foreground"
+                Value="White"/>
+
+            <Setter
+                Property="BorderBrush"
+                Value="#8B5CF6"/>
+
+            <Setter
+                Property="MinWidth"
+                Value="145"/>
+
+            <Setter
+                Property="MinHeight"
+                Value="42"/>
+
+            <Setter
+                Property="FontWeight"
+                Value="SemiBold"/>
+        </Style>
+
+        <Style Selector="Button.primary:pointerover">
+            <Setter
+                Property="Background"
+                Value="#8B5CF6"/>
+        </Style>
+
+        <!-- ================================================= -->
+        <!-- PROJECT CARD -->
+        <!-- ================================================= -->
+
+        <Style Selector="Border.project-card">
+            <Setter
+                Property="Background"
+                Value="#181B20"/>
+
+            <Setter
+                Property="BorderBrush"
+                Value="#343840"/>
+
+            <Setter
+                Property="BorderThickness"
+                Value="1"/>
+
+            <Setter
+                Property="CornerRadius"
+                Value="10"/>
+
+            <Setter
+                Property="Padding"
+                Value="18"/>
+        </Style>
+
+        <!-- ================================================= -->
+        <!-- PROGRESS BAR -->
+        <!-- ================================================= -->
+
+        <Style Selector="ProgressBar">
+            <Setter
+                Property="Minimum"
+                Value="0"/>
+
+            <Setter
+                Property="Maximum"
+                Value="100"/>
+
+            <Setter
+                Property="Height"
+                Value="12"/>
+
+            <Setter
+                Property="Background"
+                Value="#292C32"/>
+
+            <Setter
+                Property="Foreground"
+                Value="#7C3AED"/>
+        </Style>
+
+        <!-- ================================================= -->
+        <!-- TASK CHECKBOX -->
+        <!-- ================================================= -->
+
+        <Style Selector="CheckBox.task-check">
+            <Setter
+                Property="Foreground"
+                Value="#F4F4F5"/>
+
+            <Setter
+                Property="FontSize"
+                Value="14"/>
+        </Style>
+
+        <!-- ================================================= -->
+        <!-- DISABLED ACTION BUTTONS -->
+        <!-- ================================================= -->
+
+        <Style Selector="Button.dashboard-action">
+            <Setter
+                Property="MinWidth"
+                Value="82"/>
+
+            <Setter
+                Property="MinHeight"
+                Value="36"/>
+
+            <Setter
+                Property="Padding"
+                Value="12,7"/>
+        </Style>
+
+    </Window.Styles>
+
+    <!-- ===================================================== -->
+    <!-- DASHBOARD -->
+    <!-- ===================================================== -->
+
+    <Grid
+        RowDefinitions="Auto,*"
+        Margin="32">
+
+        <!-- ================================================= -->
+        <!-- HEADER -->
+        <!-- ================================================= -->
+
+        <Grid
+            Grid.Row="0"
+            ColumnDefinitions="*,Auto"
+            Margin="0,0,0,28">
+
+            <StackPanel
+                Grid.Column="0"
+                Spacing="5">
+
+                <TextBlock
+                    Text="Dashboard"
+                    FontSize="30"
+                    FontWeight="Bold"/>
+
+                <TextBlock
+                    Classes="subtitle"
+                    Text="Manage your projects and tasks."/>
+
+            </StackPanel>
+
+            <StackPanel
+                Grid.Column="1"
+                Orientation="Horizontal"
+                VerticalAlignment="Center"
+                Spacing="10">
+
+                <Button
+                    x:Name="GitHubStatusButton"
+                    Content="GitHub: Checking..."
+                    Click="GitHubStatusButton_Click"
+                    VerticalAlignment="Center"/>
+
+                <Button
+                    Classes="primary"
+                    Content="+ New Project"
+                    Click="NewProjectButton_Click"
+                    VerticalAlignment="Center"/>
+
+            </StackPanel>
+
+        </Grid>
+
+        <!-- ================================================= -->
+        <!-- PROJECT SECTION -->
+        <!-- ================================================= -->
+
+        <Border
+            Grid.Row="1"
+            Background="#181B20"
+            BorderBrush="#343840"
+            BorderThickness="1"
+            CornerRadius="10"
+            Padding="20">
+
+            <Grid
+                RowDefinitions="Auto,*">
+
+                <TextBlock
+                    Grid.Row="0"
+                    Classes="section-title"
+                    Text="Projects"
+                    Margin="0,0,0,18"/>
+
+                <!-- ================================================= -->
+                <!-- PROJECT CARDS -->
+                <!-- ================================================= -->
+
+                <ScrollViewer
+                    Grid.Row="1"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
+
+                    <StackPanel
+                        x:Name="ProjectCardsPanel"
+                        Spacing="12"/>
+
+                </ScrollViewer>
+
+            </Grid>
+
+        </Border>
+
+    </Grid>
+
 </Window>

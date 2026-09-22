@@ -480,3 +480,11 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Ordeal release builds
+/releases/
+
+# Ordeal development backup files
+*.backup
+*.before-commit
+*.before-push
